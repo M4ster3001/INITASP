@@ -40,12 +40,25 @@
                 @Html.DisplayFor(modelItem => item.num_age)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.flg_type)
+                @if (item.flg_type == 1)
+                {
+                    <label>Administrador</label>
+                }
+                else
+                if (item.flg_type == 2)
+                {
+                    <label>Técnico</label>
+                }
+                else
+                if (item.flg_type == 3)
+                {
+                    <label>Usuário comum</label>
+                }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
             </td>
         </tr>
 }

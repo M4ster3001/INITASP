@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CRUD.Models.Contexto;
+﻿using CRUD.Models.Contexto;
 using CRUD.Models.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CRUD.Controllers
 {
-    public class UsuarioController : Controller
+    public class UsuariosController : Controller
     {
         private readonly Contexto _contexto;
-        public UsuarioController(Contexto contexto) {
+        public UsuariosController(Contexto contexto)
+        {
             _contexto = contexto;
         }
 
@@ -26,7 +25,7 @@ namespace CRUD.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create() 
+        public IActionResult Create()
         {
 
             var usuario = new Usuario();
@@ -37,15 +36,15 @@ namespace CRUD.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Usuario usuario) 
+        public IActionResult Create(Usuario usuario)
         {
 
-            if( ModelState.IsValid ) 
+            if (ModelState.IsValid)
             {
                 _contexto.Usuario.Add(usuario);
                 _contexto.SaveChanges();
 
-                return RedirectToAction("Index");   
+                return RedirectToAction("Index");
             }
 
             CarregarTipoUsuario();
@@ -69,7 +68,7 @@ namespace CRUD.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit( Usuario usuario )
+        public IActionResult Edit(Usuario usuario)
         {
 
             if (ModelState.IsValid)
