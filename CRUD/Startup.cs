@@ -21,7 +21,7 @@ namespace CRUD
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Contexto>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped<Contexto, Contexto>();
             services.AddMvc();
 
         }
